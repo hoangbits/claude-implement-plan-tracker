@@ -3,17 +3,36 @@
 A Claude Code plugin that always shows the whole plan in a pane:
 
 ```
-2/5 done · task list
-✓ 1. Read ticket
-✓ 2. Write OpenSpec proposal
-▶ 3. Implement context functions
-○ 4. Add tests
-○ 5. Commit and open PR
+2/5 done · ~45 min left · task list
+✓ 1. Read ticket (~5 min)
+✓ 2. Write OpenSpec proposal (~15 min)
+▶ 3. Implement context functions (~20 min)
+○ 4. Add tests (~10 min)
+○ 5. Commit and open PR (~5 min)
+> Add a step after the current one
 ```
 
 - Every step, with `✓` done, `▶` current, `○` pending
-- A `done/total` count
-- A status line entry: `Plan 2/5 ▶ Implement context functions`
+- A `done/total` count and the time left
+- A text box to add a step, also while Claude is working
+- A status line entry: `Plan 2/5 · ~45 min left ▶ Implement context functions`
+
+## Time left
+
+The plugin asks Claude to end each step with an estimate, for example `(~10 min)`.
+
+- Before any step is done, the time left is the sum of Claude's estimates.
+- After steps are done, the plugin measures how long each one took. It scales Claude's estimates by actual time / estimated time.
+- Steps without an estimate use the average measured time.
+- The current step's elapsed time is subtracted.
+
+## Add a step while Claude works
+
+Press `ctrl+x tab` to focus the pane, `Tab` to the text box, type the step, and press `Enter`. The step goes after the current step.
+
+- Task list: the plugin rewrites the task list (or creates a task) with the new step.
+- OpenSpec: the plugin writes a `- [ ]` line into `tasks.md` after the current step.
+- Claude gets a note about the new step with the result of its next tool call, so it sees the edit without stopping. If Claude is idle, the note goes with your next message.
 
 ## Plan source
 
