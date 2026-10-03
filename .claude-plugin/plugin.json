@@ -1,0 +1,9 @@
+{
+  "name": "implement-plan-tracker",
+  "version": "0.1.0",
+  "description": "Live pane with every step of the current plan, the current step marked, and a done/total count",
+  "types": "./types/index.d.ts",
+  "author": {
+    "name": "Hoang Le"
+  }
+}

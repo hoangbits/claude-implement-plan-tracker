@@ -1,0 +1,14 @@
+{
+  "name": "implement-plan-tracker",
+  "description": "Claude Code pane that shows every plan step and the current step",
+  "owner": {
+    "name": "Hoang Le"
+  },
+  "plugins": [
+    {
+      "name": "implement-plan-tracker",
+      "source": "./",
+      "description": "Live pane with every step of the current plan, the current step marked, and a done/total count"
+    }
+  ]
+}
